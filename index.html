@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastPacket - Envíos Nacionales</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">📦 FastPacket</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Calcular Envío</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Seguimiento</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Empresas</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-white py-5 mb-5 border-bottom">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold text-primary">Envíos rápidos a toda España</h1>
+            <p class="lead text-secondary">Calcula el precio de tu paquete al instante. Sin sorpresas.</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                
+                <div class="card shadow-lg border-0 rounded-3">
+                    <div class="card-header bg-primary text-white text-center py-3">
+                        <h4 class="mb-0">Calculadora de Tarifas 2025</h4>
+                    </div>
+                    <div class="card-body p-4">
+                        
+                        <div id="zona-formulario">
+                            <p class="text-muted text-center fst-italic">
+                                -- Aquí se cargará el formulario de envíos --
+                            </p>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <div id="zona-resultado" class="text-center">
+                            <div class="alert alert-secondary d-none" id="resultado-alert">
+                                El precio de tu envío es: <span id="precio-final" class="fw-bold display-6">0 €</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-4 mt-5 bg-dark text-white text-center">
+        <div class="container">
+            <small>Copyright &copy; 2025 FastPacket - Proyecto Frontend</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

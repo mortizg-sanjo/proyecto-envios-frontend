@@ -1,0 +1,31 @@
+/* style.css */
+:root {
+    --color-correos: #FFD100; /* Amarillo inspirado en paquetería */
+    --color-azul: #003399;
+}
+
+.navbar {
+    background-color: var(--color-azul) !important;
+}
+
+.card-header {
+    background-color: var(--color-azul) !important;
+}
+
+/* Botón que usará Daniela más tarde */
+.btn-calcular {
+    background-color: var(--color-correos);
+    color: var(--color-azul);
+    font-weight: bold;
+    border: none;
+    transition: transform 0.2s;
+}
+
+.btn-calcular:hover {
+    background-color: #e6bc00;
+    transform: scale(1.02);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
