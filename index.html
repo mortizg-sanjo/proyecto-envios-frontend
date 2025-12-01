@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogiFast - Envíos Rápidos y Seguros</title>
+    
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Estilos Personalizados -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Configuración de Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            primary: '#2563eb',
+                            accent: '#f97316',
+                            light: '#f8fafc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Script de UI (Navbar) -->
+    <script src="main.js" defer></script>
+</head>
+<body class="font-sans text-slate-800 antialiased flex flex-col min-h-screen">
+
+    <!-- NAVBAR -->
+    <nav class="bg-brand-dark text-white sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <i class="fa-solid fa-truck-fast text-brand-accent text-2xl mr-2"></i>
+                    <span class="font-bold text-xl tracking-wide">Logi<span class="text-brand-primary">Fast</span></span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="hover:text-brand-primary transition duration-300">Inicio</a>
+                    <a href="#calculadora" class="hover:text-brand-primary transition duration-300">Calcular Envío</a>
+                    <a href="#servicios" class="hover:text-brand-primary transition duration-300">Servicios</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none" aria-label="Abrir menú">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-800 pb-4">
+            <a href="#" class="block px-4 py-2 text-sm hover:bg-slate-700 transition">Inicio</a>
+            <a href="#calculadora" class="block px-4 py-2 text-sm hover:bg-slate-700 transition">Calcular Envío</a>
+            <a href="#servicios" class="block px-4 py-2 text-sm hover:bg-slate-700 transition">Servicios</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="relative bg-brand-dark text-white py-20 overflow-hidden">
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <i class="fa-solid fa-earth-europe absolute top-10 right-10 text-9xl"></i>
+            <i class="fa-solid fa-box absolute bottom-10 left-10 text-8xl"></i>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center animate-fade-in">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">
+                Envíos inteligentes <br> <span class="text-brand-primary">a toda velocidad</span>
+            </h1>
+            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                La solución logística más fiable. Calcula tu tarifa al instante y envía sin preocupaciones.
+            </p>
+            <a href="#calculadora" class="bg-brand-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105 inline-block">
+                Empezar Ahora <i class="fa-solid fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main id="calculadora" class="max-w-4xl mx-auto px-4 -mt-10 relative z-20 mb-20 flex-grow">
+        <div class="glass-card rounded-2xl p-8 md:p-12 animate-fade-in delay-100">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800">Calculadora de Tarifas</h2>
+                <p class="text-gray-500">Rellena los datos para obtener tu presupuesto inmediato</p>
+            </div>
+
+            <form id="shippingForm" class="space-y-6" novalidate>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Campo: Origen -->
+                    <div class="relative">
+                        <label for="origin" class="block text-sm font-medium text-gray-700 mb-1">Ciudad de Origen</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                                <i class="fa-solid fa-map-pin"></i>
+                            </div>
+                            <input type="text" id="origin" name="origin" class="pl-10 block w-full rounded-lg border-gray-300 border p-3 bg-gray-50 focus:ring-2 focus:ring-brand-primary focus:border-brand-primary outline-none transition" placeholder="Ej: Palma">
+                        </div>
+                        <p class="text-red-500 text-xs mt-1 hidden" id="error-origin">Campo requerido</p>
+                    </div>
+
+                    <!-- Campo: Destino -->
+                    <div class="relative">
+                        <label for="destination" class="block text-sm font-medium text-gray-700 mb-1">Ciudad de Destino</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                                <i class="fa-solid fa-flag-checkered"></i>
+                            </div>
+                            <input type="text" id="destination" name="destination" class="pl-10 block w-full rounded-lg border-gray-300 border p-3 bg-gray-50 focus:ring-2 focus:ring-brand-primary focus:border-brand-primary outline-none transition" placeholder="Ej: Barcelona">
+                        </div>
+                        <p class="text-red-500 text-xs mt-1 hidden" id="error-destination">Campo requerido</p>
+                    </div>
+
+                    <!-- Campo: Peso -->
+                    <div class="relative">
+                        <label for="weight" class="block text-sm font-medium text-gray-700 mb-1">Peso (kg)</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                                <i class="fa-solid fa-weight-hanging"></i>
+                            </div>
+                            <input type="number" id="weight" name="weight" step="0.1" class="pl-10 block w-full rounded-lg border-gray-300 border p-3 bg-gray-50 focus:ring-2 focus:ring-brand-primary focus:border-brand-primary outline-none transition" placeholder="0.0">
+                        </div>
+                        <p class="text-red-500 text-xs mt-1 hidden" id="error-weight">Peso inválido</p>
+                    </div>
+
+                    <!-- Campo: DNI -->
+                    <div class="relative">
+                        <label for="dni" class="block text-sm font-medium text-gray-700 mb-1">DNI Remitente</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                                <i class="fa-solid fa-id-card"></i>
+                            </div>
+                            <input type="text" id="dni" name="dni" class="pl-10 block w-full rounded-lg border-gray-300 border p-3 bg-gray-50 focus:ring-2 focus:ring-brand-primary focus:border-brand-primary outline-none transition uppercase" placeholder="12345678Z">
+                        </div>
+                        <p class="text-red-500 text-xs mt-1 hidden" id="error-dni">DNI inválido</p>
+                    </div>
+                </div>
+
+                <div class="pt-4">
+                    <button type="submit" id="calculateBtn" class="w-full bg-brand-dark hover:bg-slate-900 text-white font-bold py-4 rounded-lg shadow-md hover:shadow-xl transition duration-300 flex justify-center items-center group">
+                        <span>Calcular Precio</span>
+                        <i class="fa-solid fa-calculator ml-2 group-hover:rotate-12 transition"></i>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Contenedor de Resultados (Oculto inicialmente) -->
+            <div id="result-container" class="mt-8 hidden transition-all duration-300 ease-in-out">
+                <div class="bg-green-50 border border-green-200 rounded-lg p-6 text-center flex flex-col items-center">
+                    <p class="text-green-800 font-medium">Precio Final del Envío</p>
+                    <div class="flex items-baseline my-2">
+                        <span id="final-price" class="text-5xl font-bold text-green-600">0</span>
+                        <span class="text-2xl text-green-600 ml-1">€</span>
+                    </div>
+                    <p id="shipping-details" class="text-sm text-green-700"></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-slate-400 py-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center text-sm">
+            <p>&copy; 2025 LogiFast S.L. - Proyecto Desarrollo Web</p>
+        </div>
+    </footer>
+</body>
+</html>
