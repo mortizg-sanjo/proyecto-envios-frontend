@@ -1,5 +1,6 @@
 /**
  * Tarea 10% de la Nota: Función de Validación de DNI
+ * hola
  * Verifica el formato (8 dígitos + 1 letra) y que la letra sea correcta.
  * @param {string} dni El DNI a validar.
  * @returns {object} Un objeto con { valido: boolean, mensaje: string }.
